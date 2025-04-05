@@ -21,8 +21,7 @@
     },
     {
       "name": "age",
-      "type": "string",
-      "default": ""
+      "type": ["null","string"]
     }
   ]
 }

@@ -6,13 +6,18 @@ topic:
 spring:
   kafka:
     consumer:
-      group-id: "java-topic"
+      bootstrap-servers: "pkc-56d1g.eastus.azure.confluent.cloud:9092"
+      group-id: "java-topic-2"
       key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
       value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
       properties:
-        schema:
-          registry:
-            url: "http://127.0.0.1:8081"
-        specific:
-          avro:
-            reader: "true"
+        security.protocol: SASL_SSL
+        sasl.mechanism: PLAIN
+        sasl.jaas.config: >
+          org.apache.kafka.common.security.plain.PlainLoginModule required
+          username="E3WKD2ZAAUG223UI"
+          password="T2OxJukwz4B4/Lrx/8UDxI5VD1XT6t9JFFWXri1E7OL5eVw17xT6z9ZHDJrpubxT";
+        schema.registry.url: "https://psrc-4x67e5q.eastus.azure.confluent.cloud"
+        basic.auth.credentials.source: USER_INFO
+        basic.auth.user.info: 7QLE6E5S6ENHTFZG:8OyRuq+16OtfqwQGj6Hys8TBmg6T0pUPooXnLkfSFQwSfkYp904hbLTmBjbxbHry
+        specific.avro.reader: "true"
